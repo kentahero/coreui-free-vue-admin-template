@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 // Containers
-import Full from '@/containers/Full'
+import DefaultContainer from '@/containers/DefaultContainer'
 
 // Views
 import Dashboard from '@/views/Dashboard'
@@ -18,6 +18,7 @@ import Cards from '@/views/base/Cards'
 import Forms from '@/views/base/Forms'
 import Switches from '@/views/base/Switches'
 import Tables from '@/views/base/Tables'
+import Tabs from '@/views/base/Tabs'
 import Breadcrumbs from '@/views/base/Breadcrumbs'
 import Carousels from '@/views/base/Carousels'
 import Collapses from '@/views/base/Collapses'
@@ -34,12 +35,13 @@ import Tooltips from '@/views/base/Tooltips'
 import StandardButtons from '@/views/buttons/StandardButtons'
 import ButtonGroups from '@/views/buttons/ButtonGroups'
 import Dropdowns from '@/views/buttons/Dropdowns'
-import SocialButtons from '@/views/buttons/SocialButtons'
+import BrandButtons from '@/views/buttons/BrandButtons'
 
 // Views - Icons
 import Flags from '@/views/icons/Flags'
 import FontAwesome from '@/views/icons/FontAwesome'
 import SimpleLineIcons from '@/views/icons/SimpleLineIcons'
+import CoreUIIcons from '@/views/icons/CoreUIIcons'
 
 // Views - Notifications
 import Alerts from '@/views/notifications/Alerts'
@@ -63,7 +65,7 @@ export default new Router({
       path: '/',
       redirect: '/dashboard',
       name: 'Home',
-      component: Full,
+      component: DefaultContainer,
       children: [
         {
           path: 'dashboard',
@@ -129,6 +131,11 @@ export default new Router({
               component: Tables
             },
             {
+              path: 'tabs',
+              name: 'Tabs',
+              component: Tabs
+            },
+            {
               path: 'breadcrumbs',
               name: 'Breadcrumbs',
               component: Breadcrumbs
@@ -187,7 +194,7 @@ export default new Router({
         },
         {
           path: 'buttons',
-          redirect: '/buttons/buttons',
+          redirect: '/buttons/standard-buttons',
           name: 'Buttons',
           component: {
             render (c) { return c('router-view') }
@@ -209,9 +216,9 @@ export default new Router({
               component: Dropdowns
             },
             {
-              path: 'social-buttons',
-              name: 'Social Buttons',
-              component: SocialButtons
+              path: 'brand-buttons',
+              name: 'Brand Buttons',
+              component: BrandButtons
             }
           ]
         },
@@ -223,6 +230,11 @@ export default new Router({
             render (c) { return c('router-view') }
           },
           children: [
+            {
+              path: 'coreui-icons',
+              name: 'CoreUI Icons',
+              component: CoreUIIcons
+            },
             {
               path: 'flags',
               name: 'Flags',
